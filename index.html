@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrthoNow | Expert Orthopaedic Consultation in Bengaluru</title>
+    <meta name="description" content="Specialized treatment for knee pain, back pain and joint problems. Book your consultation at OrthoNow.">
+    
+    <style>
+        /* CSS Variables for consistent, accessible theming */
+        :root {
+            --primary: #0284c7; /* Trustworthy healthcare blue */
+            --primary-hover: #0369a1;
+            --primary-light: #e0f2fe;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --bg-page: #f8fafc;
+            --bg-card: #ffffff;
+            --border: #e2e8f0;
+            --success: #16a34a;
+            --error: #dc2626;
+            --focus-ring: rgba(2, 132, 199, 0.3);
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Modern CSS Reset & Core Typography */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-page);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Layout Utilities */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 64px 0;
+        }
+
+        .text-center { text-align: center; }
+        .flex { display: flex; }
+        .grid { display: grid; }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        
+        /* Typography */
+        h1, h2, h3 { line-height: 1.2; font-weight: 700; color: var(--text-main); }
+        h1 { font-size: 2.5rem; margin-bottom: 16px; letter-spacing: -0.02em; }
+        h2 { font-size: 2rem; margin-bottom: 32px; letter-spacing: -0.01em; }
+        h3 { font-size: 1.25rem; margin-bottom: 8px; }
+        p { color: var(--text-muted); font-size: 1rem; margin-bottom: 16px; }
+
+        /* Focus States for Accessibility */
+        :focus-visible {
+            outline: 3px solid var(--focus-ring);
+            outline-offset: 2px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.125rem;
+            padding: 14px 28px;
+            border-radius: var(--radius-md);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            line-height: 1;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-primary:disabled {
+            background-color: var(--text-muted);
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .btn-block { width: 100%; }
+
+        /* 1. Top Trust Bar */
+        .top-bar {
+            background-color: #0f172a;
+            color: #f8fafc;
+            padding: 8px 0;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .top-bar .flex {
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .top-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* 2. Header / Navbar */
+        .header {
+            background: var(--bg-card);
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 40;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 3. Hero Section */
+        .hero {
+            background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-page) 100%);
+            padding: 80px 0 64px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            color: #0f172a;
+        }
+
+        .hero-content p.subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 32px;
+            color: var(--text-muted);
+            max-width: 90%;
+        }
+
+        .hero-image-wrapper {
+            background: var(--primary-light);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 4. Trust Indicators */
+        .trust-grid {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: -32px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .trust-card {
+            background: var(--bg-card);
+            padding: 24px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .trust-card .stat {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .trust-card .label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* 5. Benefits Section */
+        .benefits-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .benefit-card {
+            background: var(--bg-card);
+            padding: 32px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            transition: transform 0.2s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .benefit-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        /* 6. Testimonials Section */
+        .testimonials {
+            background-color: #0f172a;
+            color: var(--bg-card);
+        }
+        
+        .testimonials h2 { color: white; }
+
+        .testimonial-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: #1e293b;
+            padding: 32px;
+            border-radius: var(--radius-lg);
+            border: 1px solid #334155;
+        }
+
+        .stars {
+            color: #fbbf24;
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-text {
+            color: #cbd5e1;
+            font-style: italic;
+            margin-bottom: 24px;
+        }
+
+        .patient-name {
+            font-weight: 600;
+            color: white;
+            font-size: 0.875rem;
+        }
+
+        /* 7. Consultation Form Section */
+        .form-section {
+            background: var(--primary-light);
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 1rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            background: var(--bg-page);
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--bg-card);
+            box-shadow: 0 0 0 3px var(--focus-ring);
+        }
+
+        .form-control[aria-invalid="true"] {
+            border-color: var(--error);
+            background: #fef2f2;
+        }
+
+        .error-message {
+            color: var(--error);
+            font-size: 0.875rem;
+            margin-top: 6px;
+            display: none;
+            font-weight: 500;
+        }
+
+        .error-message.visible {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .privacy-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 16px;
+            margin-bottom: 0;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .is-loading .spinner {
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Success State */
+        .success-state {
+            display: none;
+            text-align: center;
+            padding: 32px 0;
+        }
+
+        .success-icon {
+            width: 64px;
+            height: 64px;
+            background: #dcfce7;
+            color: var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        /* 8. FAQ Section (Accessible Native Accordion) */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .faq-item summary {
+            padding: 20px;
+            font-weight: 600;
+            font-size: 1.125rem;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-main);
+        }
+        
+        .faq-item summary::-webkit-details-marker { display: none; }
+
+        .faq-item summary:focus-visible { outline: none; background: var(--primary-light); }
+
+        .faq-item summary::after {
+            content: "+";
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: transform 0.2s;
+        }
+
+        .faq-item[open] summary::after {
+            content: "−";
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-muted);
+        }
+
+        /* 9. Footer */
+        .footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 48px 0;
+            text-align: center;
+            border-top: 1px solid #1e293b;
+        }
+
+        .footer p { margin-bottom: 8px; color: inherit; }
+
+        /* 10. Sticky Mobile CTA */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-card);
+            padding: 16px 24px;
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+            z-index: 50;
+            display: none;
+            transform: translateY(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .sticky-cta.visible { transform: translateY(0); }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            .hero-grid { gap: 32px; }
+            .trust-grid { grid-template-columns: repeat(2, 1fr); margin-top: 32px; }
+            .hero { padding-bottom: 32px; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .section { padding: 48px 0; }
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-content p.subtitle { margin: 0 auto 32px; }
+            .benefits-grid, .testimonial-grid { grid-template-columns: 1fr; }
+            .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            
+            /* Enable Sticky CTA on mobile */
+            .sticky-cta { display: block; }
+            
+            /* Add padding to footer so it doesn't hide behind sticky CTA */
+            .footer { padding-bottom: 88px; }
+            
+            /* Hide non-essential top bar items on small screens */
+            .top-bar-item:nth-child(n+3) { display: none; }
+        }
+
+        @media (max-width: 414px) {
+            .trust-grid { grid-template-columns: 1fr; }
+            .form-container { padding: 32px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Top Trust Bar -->
+    <div class="top-bar">
+        <div class="container flex">
+            <div class="top-bar-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                NABH Certified Clinics
+            </div>
+            <div class="top-bar-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                4.8 Google Rating
+            </div>
+            <div class="top-bar-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                10,000+ Happy Patients
+            </div>
+            <div class="top-bar-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                9 Clinics Across India
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container flex justify-between items-center">
+            <a href="#" class="logo" aria-label="OrthoNow Homepage">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"></path></svg>
+                OrthoNow
+            </a>
+            <a href="#booking" class="btn btn-primary" style="padding: 10px 20px; font-size: 1rem;">Book Now</a>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="grid hero-grid">
+                <div class="hero-content">
+                    <h1>Get an Expert Orthopaedic Opinion</h1>
+                    <p class="subtitle">Specialized treatment for knee pain, back pain and joint problems. Book your consultation in under 30 seconds.</p>
+                    <a href="#booking" class="btn btn-primary">Book Consultation</a>
+                </div>
+                <div class="hero-image-wrapper">
+                    <!-- Professional SVG Placeholder -->
+                    <svg width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Trust Indicators -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="grid trust-grid">
+                <div class="trust-card">
+                    <div class="stat">25+</div>
+                    <div class="label">Orthopaedic Specialists</div>
+                </div>
+                <div class="trust-card">
+                    <div class="stat">9</div>
+                    <div class="label">Clinics in India</div>
+                </div>
+                <div class="trust-card">
+                    <div class="stat">10k+</div>
+                    <div class="label">Happy Patients</div>
+                </div>
+                <div class="trust-card">
+                    <div class="stat">15+</div>
+                    <div class="label">Years Experience</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Benefits Section -->
+    <section class="section bg-page">
+        <div class="container">
+            <div class="text-center">
+                <h2>Why Choose OrthoNow</h2>
+                <p style="max-width: 600px; margin: 0 auto 48px;">Experience world-class orthopaedic care designed around your comfort and recovery.</p>
+            </div>
+            
+            <div class="grid benefits-grid">
+                <!-- Benefit 1 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    </div>
+                    <h3>Same-day appointments</h3>
+                    <p>Don't wait in pain. We ensure immediate availability for urgent orthopaedic consultations.</p>
+                </div>
+                <!-- Benefit 2 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    </div>
+                    <h3>Experienced specialists</h3>
+                    <p>Consult with top-tier doctors specializing in knee, back, and complex joint replacements.</p>
+                </div>
+                <!-- Benefit 3 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </div>
+                    <h3>Personalized treatment</h3>
+                    <p>Every patient receives a custom treatment plan focused on long-term joint health.</p>
+                </div>
+                <!-- Benefit 4 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><circle cx="12" cy="14" r="3"></circle></svg>
+                    </div>
+                    <h3>Digital X-ray & diagnostics</h3>
+                    <p>Advanced imaging technology on-site for rapid, accurate diagnosis of bone and joint issues.</p>
+                </div>
+                <!-- Benefit 5 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></svg>
+                    </div>
+                    <h3>Easy parking</h3>
+                    <p>Ample, accessible parking spaces specifically reserved for our orthopaedic patients.</p>
+                </div>
+                <!-- Benefit 6 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
+                    </div>
+                    <h3>Insurance assistance</h3>
+                    <p>Dedicated staff to help you navigate coverage and process healthcare insurance claims easily.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Patient Testimonials -->
+    <section class="section testimonials">
+        <div class="container">
+            <h2 class="text-center">Hear From Our Patients</h2>
+            <div class="grid testimonial-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="stars">
+                        ★★★★★
+                    </div>
+                    <p class="testimonial-text">"I was suffering from severe knee pain for over a year. The doctors at OrthoNow diagnosed the issue immediately. Post-treatment, I'm back to my morning walks without any discomfort."</p>
+                    <div class="patient-name">Rahul Sharma</div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="stars">
+                        ★★★★★
+                    </div>
+                    <p class="testimonial-text">"The entire process was so smooth. From booking the appointment to the actual consultation, everything felt premium and professional. My back pain is finally manageable."</p>
+                    <div class="patient-name">Priya Desai</div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="stars">
+                        ★★★★★
+                    </div>
+                    <p class="testimonial-text">"Excellent facilities and very courteous staff. The specialist took the time to explain my shoulder issue in detail rather than just handing me a prescription. Highly recommended."</p>
+                    <div class="patient-name">Karthik Reddy</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Consultation Form -->
+    <section id="booking" class="section form-section">
+        <div class="container">
+            <div class="form-container">
+                
+                <div id="form-ui">
+                    <h2 class="text-center" style="margin-bottom: 24px;">Book My Consultation</h2>
+                    
+                    <form id="consultation-form" novalidate>
+                        <div class="form-group">
+                            <label for="fullName" class="form-label">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" class="form-control" placeholder="Enter your full name" required aria-required="true">
+                            <div class="error-message" id="nameError">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                                Name is required
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="10-digit mobile number" required aria-required="true" pattern="[0-9]{10}">
+                            <div class="error-message" id="phoneError">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                                Please enter a valid 10-digit phone number
+                            </div>
+                        </div>
+
+                        <!-- Hidden Clinic Preference -->
+                        <input type="hidden" id="clinic_region" name="clinic_region" value="India">
+
+                        <button type="submit" id="submitBtn" class="btn btn-primary btn-block">
+                            <span class="spinner"></span>
+                            <span class="btn-text">Book My Consultation</span>
+                        </button>
+                    </form>
+                    
+                    <p class="privacy-note">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        We never share your information.
+                    </p>
+                </div>
+
+                <!-- Success State (Hidden by default) -->
+                <div id="success-ui" class="success-state">
+                    <div class="success-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <h2 style="margin-bottom: 16px;">Thank You</h2>
+                    <p>Your consultation request has been received.</p>
+                    <p>Our clinic team will contact you shortly to confirm your appointment time.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. FAQ -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>What should I bring to my first appointment?</summary>
+                    <div class="faq-answer">Please bring any previous X-rays, MRI scans, or medical records related to your condition. Also, carry a valid government ID and your insurance card if applicable.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Do you accept health insurance?</summary>
+                    <div class="faq-answer">Yes, we are empaneled with all major health insurance providers. Our dedicated desk will assist you with the claims process.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>How long does a consultation usually take?</summary>
+                    <div class="faq-answer">A standard initial consultation takes about 20 to 30 minutes, allowing our specialists to thoroughly understand your symptoms and medical history.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Are digital X-rays available on-site?</summary>
+                    <div class="faq-answer">Yes, all our clinics are equipped with advanced digital X-ray technology to ensure quick and accurate on-the-spot diagnostics.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Do I need a referral to see a specialist here?</summary>
+                    <div class="faq-answer">No, you do not need a doctor's referral to book a consultation at OrthoNow. You can book directly using our online form or by calling our clinics.</div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="logo justify-center" style="margin-bottom: 16px; color: white;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"></path></svg>
+                OrthoNow
+            </div>
+            <p>Providing expert orthopaedic care across India.</p>
+            <p style="font-size: 0.875rem; color: #64748b; margin-top: 24px;">&copy; 2026 OrthoNow Healthcare. All rights reserved. | <a href="#" style="color: inherit;">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <!-- 7. Sticky Mobile CTA -->
+    <div class="sticky-cta" id="stickyCta">
+        <a href="#booking" class="btn btn-primary btn-block">Book Consultation</a>
+    </div>
+
+    <!-- JavaScript logic -->
+    <script>
+        // Initialize Data Layer
+        window.dataLayer = window.dataLayer || [];
+
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // --- Sticky CTA Observer for Mobile ---
+            const heroSection = document.querySelector('.hero');
+            const stickyCta = document.getElementById('stickyCta');
+            
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        // Show sticky CTA only when hero section is out of view
+                        if (!entry.isIntersecting && window.innerWidth <= 768) {
+                            stickyCta.classList.add('visible');
+                        } else {
+                            stickyCta.classList.remove('visible');
+                        }
+                    });
+                });
+                observer.observe(heroSection);
+            }
+
+            // --- Form Validation & Submission ---
+            const form = document.getElementById('consultation-form');
+            const nameInput = document.getElementById('fullName');
+            const phoneInput = document.getElementById('phone');
+            const nameError = document.getElementById('nameError');
+            const phoneError = document.getElementById('phoneError');
+            const submitBtn = document.getElementById('submitBtn');
+            const formUI = document.getElementById('form-ui');
+            const successUI = document.getElementById('success-ui');
+            let isSubmitting = false;
+
+            function validatePhone(phone) {
+                const phoneRegex = /^\d{10}$/;
+                return phoneRegex.test(phone);
+            }
+
+            function clearErrors() {
+                nameInput.setAttribute('aria-invalid', 'false');
+                phoneInput.setAttribute('aria-invalid', 'false');
+                nameError.classList.remove('visible');
+                phoneError.classList.remove('visible');
+            }
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (isSubmitting) return;
+
+                clearErrors();
+                let isValid = true;
+
+                // Validate Name
+                if (nameInput.value.trim() === '') {
+                    nameInput.setAttribute('aria-invalid', 'true');
+                    nameError.classList.add('visible');
+                    isValid = false;
+                }
+
+                // Validate Phone
+                const phoneVal = phoneInput.value.trim().replace(/\D/g, ''); // strip non-digits for validation
+                if (!validatePhone(phoneVal)) {
+                    phoneInput.setAttribute('aria-invalid', 'true');
+                    phoneError.classList.add('visible');
+                    isValid = false;
+                }
+
+                if (isValid) {
+                    // Start Loading State
+                    isSubmitting = true;
+                    submitBtn.disabled = true;
+                    submitBtn.classList.add('is-loading');
+                    submitBtn.querySelector('.btn-text').textContent = 'Processing...';
+
+                    // Simulate network request (500ms)
+                    setTimeout(() => {
+                        // Trigger Success State
+                        formUI.style.display = 'none';
+                        successUI.style.display = 'block';
+
+                        // Fire Data Layer Event
+                        window.dataLayer.push({
+                            event: "consultation_form_submitted",
+                            lead_source: "Google Ads",
+                            clinic_region: document.getElementById('clinic_region').value,
+                            form_type: "minimal_booking",
+                            submission_time: new Date().toISOString()
+                        });
+                        
+                        // Console log as per assignment requirements
+                        console.log("DataLayer:", window.dataLayer);
+                        
+                    }, 500);
+                }
+            });
+
+            // Clear errors on input focus
+            nameInput.addEventListener('focus', function() {
+                nameInput.setAttribute('aria-invalid', 'false');
+                nameError.classList.remove('visible');
+            });
+            phoneInput.addEventListener('focus', function() {
+                phoneInput.setAttribute('aria-invalid', 'false');
+                phoneError.classList.remove('visible');
+            });
+        });
+    </script>
+</body>
+</html>
